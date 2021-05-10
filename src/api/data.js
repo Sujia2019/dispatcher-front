@@ -49,13 +49,3 @@ export const getTreeSelectData = () => {
     method: 'get'
   })
 }
-
-export const registServer = (server) => {
-  return axios.request({
-    url: 'server/create',
-    method: 'post',
-    data: {
-      server
-    }
-  })
-}

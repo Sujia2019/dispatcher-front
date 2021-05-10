@@ -28,20 +28,21 @@
   </div>
 </template>
 <script>
+import { registServer } from '@/api/user'
 export default {
   name: 'server_registry',
   data () {
     return {
       server: {
-        server_key: '123-123-123-123',
-        server_add: '192.168.56.118',
-        server_name: 'default',
-        server_user: 'root',
-        server_pwd: '19990315',
-        server_status: 'true',
-        server_memory: 1024,
-        server_hard: 10240,
-        server_detail: '备注'
+        server_key: '',
+        server_add: '',
+        server_name: '',
+        server_user: '',
+        server_pwd: '',
+        server_status: '',
+        server_memory: 0,
+        server_hard: 0,
+        server_detail: ''
       },
       statusList: [
         {
@@ -57,10 +58,13 @@ export default {
   },
   methods: {
     handleSubmit () {
-      console.log('xxx')
-      console.log(this.server)
-
-      this.$data.registServer(this.server)
+      registServer(this.server).then(res => {
+        if (res.data.code === 666) {
+          this.$Message.success('服务器注册成功！')
+        } else {
+          this.$Message.error('服务器注册失败!')
+        }
+      })
     }
   }
 }

@@ -111,7 +111,7 @@ export default {
         try {
           getUserInfo('admin').then(res => {
             const data = res.data
-            commit('setAvatar', 'https://avatars0.githubusercontent.com/u/20942571?s=460&v=4')
+            commit('setAvatar', '/Genji.jpg')
             commit('setUserName', data.user_name)
             commit('setUserId', data.user_id)
             commit('setAccess', ['admin'])
